@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>عيد حب سعيد</title>
-
 <style>
 body{
   margin:0;
@@ -14,6 +13,7 @@ body{
   background:linear-gradient(#4b0018,#8b0033);
   overflow:hidden;
   color:white;
+  perspective:1000px; /* يعطي إحساس 3D */
 }
 
 h1{
@@ -23,14 +23,14 @@ h1{
 }
 
 .flowers{
-  font-size:60px;
-  margin-top:100px;
+  width:150px;
+  margin:100px auto 0;
   cursor:pointer;
-  transition:0.3s;
+  transition:transform 0.5s;
 }
 
 .flowers:hover{
-  transform:scale(1.2);
+  transform: rotateY(20deg) scale(1.2); /* تأثير 3D عند التفاعل */
 }
 
 .message{
@@ -68,7 +68,6 @@ h1{
   animation:pop 1s ease;
 }
 
-/* اهتزاز الصفحة */
 .shake{
   animation:shake 0.5s;
 }
@@ -79,39 +78,24 @@ h1{
   75% { transform: translate(5px, 0); }
   100% { transform: translate(0, 0); }
 }
-
-#songBtn{
-  display:none;
-  margin-top:20px;
-  font-size:20px;
-  padding:10px 20px;
-  background:#ff66cc;
-  color:white;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-}
-#songBtn:hover{
-  background:#ff99cc;
-}
 </style>
 </head>
-
 <body>
 
 <h1>💖 عيد حب سعيد 💖</h1>
 
-<div class="flowers" onclick="showLove()">
-🌸 🌸 🌸
-</div>
+<!-- استخدم صورة الوردة الحقيقية -->
+<img src="https://i.postimg.cc/YqF4Tq3G/rose.png" class="flowers" onclick="showLove()">
 
 <div id="msg" class="message">
-أحبك أكثر مما تتخيل ❤️
+ أحبك أكثر مما تتخيلي ياروحي وعمري ❤️
 </div>
 
 <div id="name">رقيتي 🌹</div>
 
-<button id="songBtn" onclick="openSong()">▶️ شغّل Lonely Day 🎸</button>
+<audio id="loveSound" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 function showLove(){
@@ -120,7 +104,7 @@ function showLove(){
   document.body.classList.add("shake");
   setTimeout(()=>document.body.classList.remove("shake"),500);
   createHeartsStars();
-  document.getElementById("songBtn").style.display="inline-block";
+  document.getElementById("loveSound").play();
 }
 
 function createHeartsStars(){
@@ -141,10 +125,6 @@ function createHeartsStars(){
     document.body.appendChild(star);
     setTimeout(()=>star.remove(),4000);
   }
-}
-
-function openSong(){
-  window.open("https://www.youtube.com/watch?v=Z4C0d5sS7l4","_blank");
 }
 </script>
 
