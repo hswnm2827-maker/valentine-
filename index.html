@@ -13,7 +13,7 @@ body{
   background:linear-gradient(#4b0018,#8b0033);
   overflow:hidden;
   color:white;
-  perspective:1000px; /* يعطي إحساس 3D */
+  perspective:1000px;
 }
 
 h1{
@@ -30,15 +30,16 @@ h1{
 }
 
 .flowers:hover{
-  transform: rotateY(20deg) scale(1.2); /* تأثير 3D عند التفاعل */
+  transform: rotateY(20deg) scale(1.2);
 }
 
 .message{
   display:none;
   margin-top:30px;
-  font-size:24px;
+  font-size:22px;
   color:#ffd1dc;
   animation:pop 1s ease;
+  text-align:right;
 }
 
 @keyframes pop{
@@ -68,6 +69,14 @@ h1{
   animation:pop 1s ease;
 }
 
+#days{
+  display:none;
+  font-size:24px;
+  color:#ffd1dc;
+  margin-top:10px;
+  animation:pop 1s ease;
+}
+
 .shake{
   animation:shake 0.5s;
 }
@@ -88,10 +97,16 @@ h1{
 <img src="https://i.postimg.cc/YqF4Tq3G/rose.png" class="flowers" onclick="showLove()">
 
 <div id="msg" class="message">
- أحبك أكثر مما تتخيلي ياروحي وعمري ❤️
+رقيتي 🌹<br>
+من يوم 12 حزيران 2025 وانتي بقلبّي وروحي.<br>
+كل لحظة وياج أحلى من الي قبلها، وكل يوم يزيد حبي إلك أكثر من اليوم اللي قبله.<br>
+أحب ضحكتج، أحب وجودج، أحب كل شيء بيج، وكل ما أفكر بيج أحس الدنيا كلها تبتسملي.<br>
+انتي شجرة حبي اللي نمت بقلبّي، وقلوبنا مرتبطة للأبد ❤️<br>
+كل يوم وياج هو عيد وحياة أحلامي 🥰
 </div>
 
 <div id="name">رقيتي 🌹</div>
+<div id="days"></div>
 
 <audio id="loveSound" loop>
 <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -105,6 +120,7 @@ function showLove(){
   setTimeout(()=>document.body.classList.remove("shake"),500);
   createHeartsStars();
   document.getElementById("loveSound").play();
+  showDays();
 }
 
 function createHeartsStars(){
@@ -125,6 +141,15 @@ function createHeartsStars(){
     document.body.appendChild(star);
     setTimeout(()=>star.remove(),4000);
   }
+}
+
+function showDays(){
+  const startDate = new Date("2025-06-12");
+  const today = new Date();
+  const diffTime = today - startDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  document.getElementById("days").innerHTML = `صارلنا ${diffDays} يوم سوا 💕`;
+  document.getElementById("days").style.display="block";
 }
 </script>
 
