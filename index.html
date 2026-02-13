@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>عيد حب سعيد</title>
+
 <style>
 body{
   margin:0;
@@ -16,46 +17,26 @@ body{
 }
 
 h1{
-  margin-top:50px;
+  margin-top:40px;
   color:#ff99cc;
   font-size:28px;
-  animation:fade 2s infinite alternate;
-}
-
-@keyframes fade{
-  from{opacity:0.6;}
-  to{opacity:1;}
-}
-
-.stars{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:url('https://www.transparenttextures.com/patterns/stardust.png');
-  animation:move 20s linear infinite;
-  opacity:0.4;
-}
-
-@keyframes move{
-  from{background-position:0 0;}
-  to{background-position:1000px 1000px;}
 }
 
 .flowers{
   font-size:60px;
-  margin-top:120px;
+  margin-top:100px;
   cursor:pointer;
   transition:0.3s;
 }
 
-.flowers:active{
-  transform:scale(1.3);
+.flowers:hover{
+  transform:scale(1.2);
 }
 
 .message{
   display:none;
   margin-top:30px;
-  font-size:22px;
+  font-size:24px;
   color:#ffd1dc;
   animation:pop 1s ease;
 }
@@ -64,28 +45,108 @@ h1{
   from{transform:scale(0);}
   to{transform:scale(1);}
 }
+
+.heart, .star{
+  position:absolute;
+  font-size:25px;
+  animation:fall linear infinite;
+}
+
+.heart{ color:pink; }
+.star{ color:yellow; }
+
+@keyframes fall{
+  from{transform:translateY(-10px);}
+  to{transform:translateY(100vh);}
+}
+
+#name{
+  display:none;
+  font-size:28px;
+  color:#ffccff;
+  margin-top:20px;
+  animation:pop 1s ease;
+}
+
+/* اهتزاز الصفحة */
+.shake{
+  animation:shake 0.5s;
+}
+@keyframes shake{
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(5px, 0); }
+  50% { transform: translate(-5px, 0); }
+  75% { transform: translate(5px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+#songBtn{
+  display:none;
+  margin-top:20px;
+  font-size:20px;
+  padding:10px 20px;
+  background:#ff66cc;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+#songBtn:hover{
+  background:#ff99cc;
+}
 </style>
 </head>
 
 <body>
 
-<div class="stars"></div>
-
-<h1>عيد حب سعيد 💖</h1>
+<h1>💖 عيد حب سعيد 💖</h1>
 
 <div class="flowers" onclick="showLove()">
 🌸 🌸 🌸
 </div>
 
 <div id="msg" class="message">
-أحبك بكل قلبي ❤️
+أحبك أكثر مما تتخيل ❤️
 </div>
+
+<div id="name">رقيتي 🌹</div>
+
+<button id="songBtn" onclick="openSong()">▶️ شغّل Lonely Day 🎸</button>
 
 <script>
 function showLove(){
   document.getElementById("msg").style.display="block";
+  document.getElementById("name").style.display="block";
+  document.body.classList.add("shake");
+  setTimeout(()=>document.body.classList.remove("shake"),500);
+  createHeartsStars();
+  document.getElementById("songBtn").style.display="inline-block";
+}
+
+function createHeartsStars(){
+  for(let i=0;i<30;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),4000);
+
+    let star=document.createElement("div");
+    star.className="star";
+    star.innerHTML="✨";
+    star.style.left=Math.random()*100+"vw";
+    star.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(star);
+    setTimeout(()=>star.remove(),4000);
+  }
+}
+
+function openSong(){
+  window.open("https://www.youtube.com/watch?v=Z4C0d5sS7l4","_blank");
 }
 </script>
 
 </body>
-  </html>
+</html>
