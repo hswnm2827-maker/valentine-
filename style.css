@@ -697,4 +697,12 @@ body {
   left: 10vmin;
   top: 14vmin;
   transform: rotate(55deg);
-
+.message {
+    direction: rtl;            /* اتجاه النص من اليمين لليار */
+    text-align: center;        /* توسيط النص */
+    white-space: normal;       /* التأكد من أن النص يتمدد طبيعياً */
+    width: 90%;                /* إعطاء مساحة كافية للنص */
+    margin: 0 auto;            /* توسيط حاوية النص في الشاشة */
+    line-height: 1.6;          /* تحسين المسافة بين الأسطر لسهولة القراءة */
+}
+  
