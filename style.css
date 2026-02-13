@@ -698,11 +698,23 @@ body {
   top: 14vmin;
   transform: rotate(55deg);
 .message {
-    direction: rtl;            /* اتجاه النص من اليمين لليار */
-    text-align: center;        /* توسيط النص */
-    white-space: normal;       /* التأكد من أن النص يتمدد طبيعياً */
-    width: 90%;                /* إعطاء مساحة كافية للنص */
-    margin: 0 auto;            /* توسيط حاوية النص في الشاشة */
-    line-height: 1.6;          /* تحسين المسافة بين الأسطر لسهولة القراءة */
+    /* هذه الخصائص تضمن أن النص يمتد أفقياً */
+    width: 90%; 
+    max-width: 400px; /* ليظهر النص بشكل مرتب في المنتصف */
+    margin: 0 auto; 
+    position: absolute;
+    top: 15%; /* تحكم بارتفاع النص عن الورود من هنا */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* تنسيق الخط العربي */
+    direction: rtl; 
+    text-align: center;
+    color: #fff; /* لون أبيض */
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* ظل خفيف لبروز النص */
+    z-index: 999;
 }
+  
   
